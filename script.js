@@ -1,5 +1,3 @@
-let playerScore = 0;
-let computerScore = 0;
 let playerSelection;
 let computerSelection;
 
@@ -7,31 +5,34 @@ const screen = document.querySelector('.screen');
 const screenTextBig = document.querySelector('#screenTextBig');
 const screenTextSmall = document.querySelector('#screenTextSmall');
 const buttons = document.querySelectorAll('.button');
-const playerScoreText = document.querySelector('#playerScore');
-const computerScoreText = document.querySelector('#computerScore');
+const playerScore = document.querySelector('#playerScore');
+const computerScore = document.querySelector('#computerScore');
 
 function gameStart(e) {
-    playerScoreText.textContent = playerScore;
-    computerScoreText.textContent = computerScore;
-    if (playerScore < 3 && computerScore < 3) {
+    screen.removeEventListener('click', gameStart); 
+    if (playerScore.textContent < 3 && computerScore.textContent < 3) {
         buttons.forEach(makeButtonActive);
         screenTextBig.classList.add('hidden');
-        screenTextSmall.textContent = 'Rock, Paper or Scissors!?';
-        screen.removeEventListener(e.type, gameStart); 
+        screenTextSmall.textContent = 'Rock, Paper or Scissors!?';     
     }
     else {
-        if (playerScore >= 3) {
+        if (playerScore.textContent >= 3) {
             screenTextBig.textContent = 'Winner!';
             screenTextSmall.textContent = `You won against CPU. Play again?`;
         }
-        else if (computerScore >= 3) {
+        else if (computerScore.textContent >= 3) {
             screenTextBig.textContent = 'Game Over';
             screenTextSmall.textContent = `You lost against CPU. Try again?`;
         }
-        playerScore = 0;
-        computerScore = 0;
         buttons.forEach(makeButtonInactive);
+        screen.addEventListener(e.type, gameRestart); 
     }
+}
+
+function gameRestart(e) {
+    playerScore.textContent = 0;
+    computerScore.textContent = 0;
+    gameStart();
 }
 
 function makeButtonActive(button) {
@@ -58,8 +59,8 @@ function highlightButtonSelection(button) {
     else {
         button.classList.add('inactive');
     }
-    button.removeEventListener('click', getPlayerChoice);
     button.addEventListener('click', gameStart)
+    button.removeEventListener('click', getPlayerChoice);
 }
 
 function getComputerChoice(){
@@ -90,8 +91,8 @@ function playRound(playerSelection, computerSelection){
         (playerSelection === 'Paper' && computerSelection === 'Scissors') ||
         (playerSelection === 'Scissors' && computerSelection === 'Rock')
         ){
-            computerScore += 1;
-            computerScoreText.classList.add('add-score');
+            computerScore.textContent = Number(computerScore.textContent) + 1;
+            computerScore.classList.add('add-score');
             screenTextBig.textContent = 'You lose!';
             screenTextSmall.textContent = `${computerSelection} beats ${playerSelection}.`;
         }
@@ -100,13 +101,11 @@ function playRound(playerSelection, computerSelection){
         (playerSelection === 'Paper' && computerSelection === 'Rock') ||
         (playerSelection === 'Scissors' && computerSelection === 'Paper')
         ){
-            playerScore += 1;
-            playerScoreText.classList.add('add-score');
+            playerScore.textContent = Number(playerScore.textContent) + 1;
+            playerScore.classList.add('add-score');
             screenTextBig.textContent = 'You win!';
             screenTextSmall.textContent = `${playerSelection} beats ${computerSelection}.`;
         }
-    playerScoreText.textContent = playerScore;
-    computerScoreText.textContent = computerScore;
 }
 
 function removeScoreEffect(e) {
@@ -114,6 +113,6 @@ function removeScoreEffect(e) {
 }
 
 screen.addEventListener('click', gameStart);
-playerScoreText.addEventListener('transitionend', removeScoreEffect);
-computerScoreText.addEventListener('transitionend', removeScoreEffect);
+playerScore.addEventListener('transitionend', removeScoreEffect);
+computerScore.addEventListener('transitionend', removeScoreEffect);
 

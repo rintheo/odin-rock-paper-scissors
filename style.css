@@ -38,6 +38,10 @@ body {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none;
+}
+
 .title {
   text-align: center;
   color: white;
@@ -54,6 +58,7 @@ body {
 
 .main {
   flex: 1 1 0px;
+  padding: 0 20px;
 }
 
 .screen{
@@ -110,6 +115,12 @@ body {
   font-size: 36px;
 }
 
+.add-score {
+  transform: scale(1.5);
+  transition: 0.07s;
+  color: green;
+}
+
 .text-box.flex {
   flex: 1;
   justify-content: center;
@@ -119,17 +130,23 @@ body {
 .text {
   font-size: 48px;
   text-align: center;
-  padding: 20px;
+  padding: 0 20px;
+}
+
+#screenTextBig.text {
+  font-size: 72px;
+  font-weight: 500;
 }
 
 .selection {
   flex-basis: 150px;
   justify-content: center;
   gap: 16px;
+  padding: 0 20px;
 }
 
 .button {
-  background: #f95959; 
+  background: #45a75d; 
   color: #e3e3e3;
   width: 200px;
   margin: 24px 0;
@@ -137,11 +154,11 @@ body {
   border: #e3e3e3 solid 2px;
   font-size: 24px;
   font-weight: 800;
-  transition-duration: 0.07s;
+  transition: 0.2s;
 }
 
 .button.active:hover {
-  opacity: 75%;
+  background: #8aa745;
 }
 
 .button.active:active {
@@ -156,8 +173,8 @@ body {
 }
 
 .button.selected {
-  transform: scale(1.1);
-  font-size: 40px;
+  transform: scale(1.05);
+  font-size: 32px;
 }
 
 

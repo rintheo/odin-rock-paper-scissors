@@ -25,24 +25,25 @@
             <div class="score-box">
               <div>Score</div>
               <div class="score flex">
-                <div id="playerScore">0</div>
-                <div id="score-colon">:</div>
-                <div id="computerScore">0</div>
+                <div id="playerScore" class="">0</div>
+                <div id="score-colon" class="">:</div>
+                <div id="computerScore" class="">0</div>
               </div>
             </div>
             <div class="computer-name-box flex">
               <div id="computerName" class="flex">CPU</div>
             </div>
           </div>
-          <div class="text-box flex">
-            <div id="screenText" class="text">Press the screen to <strong>START</strong> the game!</div>
+          <div class="text-box flex column">
+            <div id="screenTextBig" class="text">Welcome!</div>
+            <div id="screenTextSmall" class="text">Press the screen to <strong>START</strong> the game!</div>
           </div>
         </div>        
       </div>
       <div class="selection flex">
-        <button id="playerSelectionRock" class="button inactive">Rock</button>
-        <button id="playerSelectionPaper" class="button inactive">Paper</button>
-        <button id="playerSelectionScissors" class="button inactive">Scissors</button>
+        <button data-selection="Rock" class="button inactive">Rock</button>
+        <button data-selection="Paper" class="button inactive">Paper</button>
+        <button data-selection="Scissors" class="button inactive">Scissors</button>
       </div>
     </div>
   </body>

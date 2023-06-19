@@ -5,9 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
-      
+    <div class="site-container flex column">
+      <div class="title">
+        <h1>Rock Paper Scissors!</h1>
+        <h2>THE GAME</h2>
+      </div>
+      <div class="main">
+        <div class="screen max-width flex column">
+          <div class="scoreboard flex">
+            <div class="player-name-box flex">
+              <div id="playerName" class="flex">YOU</div>
+            </div>
+            <div class="score-box">
+              <div>Score</div>
+              <div class="score flex">
+                <div id="playerScore">0</div>
+                <div id="score-colon">:</div>
+                <div id="computerScore">0</div>
+              </div>
+            </div>
+            <div class="computer-name-box flex">
+              <div id="computerName" class="flex">CPU</div>
+            </div>
+          </div>
+          <div class="text-box flex">
+            <div id="screenText" class="text">Press the screen to <strong>START</strong> the game!</div>
+          </div>
+        </div>        
+      </div>
+      <div class="selection flex">
+        <button id="playerSelectionRock" class="button inactive">Rock</button>
+        <button id="playerSelectionPaper" class="button inactive">Paper</button>
+        <button id="playerSelectionScissors" class="button inactive">Scissors</button>
+      </div>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>
